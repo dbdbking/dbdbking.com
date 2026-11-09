@@ -1,0 +1,92 @@
+/* Small local overrides for the original Callisto stylesheet. */
+[hidden] { display: none !important; }
+.thumb_image img { max-width: 100%; height: auto; }
+.project_media img, .project_content img, .project_media video, .project_content video {
+  max-width: 100%;
+  height: auto;
+}
+.project_media iframe, .project_content iframe { max-width: 100%; }
+.slideshow { max-width: 100%; }
+.slideshow .slideshow_container > * { display: none; }
+.slideshow .slideshow_container > :first-child { display: block; position: relative; height: auto; }
+.offline-slideshow-ready .slideshow_container > * {
+  display: block;
+  position: absolute;
+  float: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .6s ease, visibility 0s linear .6s;
+}
+.offline-slideshow-ready .slideshow_container > :first-child { position: absolute; }
+.offline-slideshow-ready .slideshow_container > .offline-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity .6s ease;
+  z-index: 2;
+}
+.slideshow_position { margin-left: 8px; }
+.offline-lightbox-trigger { cursor: zoom-in; }
+a:focus-visible, button:focus-visible, img[role="button"]:focus-visible {
+  outline: 2px solid #777;
+  outline-offset: 3px;
+}
+.offline-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  background: #000;
+  color: #fff;
+  font: 13px/1.5 Helvetica, Arial, sans-serif;
+}
+.offline-lightbox-image-area {
+  position: absolute;
+  inset: 45px 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.offline-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+.offline-lightbox-image.offline-zoomed {
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  cursor: zoom-out;
+}
+.offline-lightbox-controls {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.offline-lightbox-controls button {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #ccc;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font: 28px/30px Arial, sans-serif;
+}
+.offline-lightbox-controls button:hover { color: #fff; }
+.offline-lightbox-counter { color: #aaa; margin-left: 8px; }
+@media (prefers-reduced-motion: reduce) {
+  .offline-slideshow-ready .slideshow_container > * { transition: none; }
+}
